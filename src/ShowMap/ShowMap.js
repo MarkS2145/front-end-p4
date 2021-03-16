@@ -167,10 +167,10 @@ class ShowMap extends Component {
   render() {
     
     // Only call the timer once the first map has been shown
-    if (this.myInt === undefined){
-      this.myInt = 1;
-      setInterval(this.myGary, 3000);
-    }
+    // if (this.myInt === undefined){
+    //   this.myInt = 1;
+    //   setInterval(this.myGary, 3000);
+    // }
 
     return (
       <LoadScript

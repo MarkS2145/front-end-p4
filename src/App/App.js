@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useDebugValue } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, Switch } from "react-router-dom";
-import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, ButtonGroup, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 // import  from "bootstrap"
 import logo from '../logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,13 +24,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Bob",
-      vehicle: [],
+      selected_vehicle_id: null,
       allVehicles: [],
       location: [],
       allLocations: [],
       // allMarkers: []
     }
+  }
+
+  componentDidMount = () => {
+    this.getAllVehicleInfo();
+    this.getAllVehicleLocations();
   }
 
   getVehicleInfoById = (e) => {
@@ -73,10 +77,10 @@ class App extends Component {
     )
   }
 
-  getAllVehicleInfo = (e) => {
-    e.preventDefault();
+  getAllVehicleInfo = () => {
+    // e.preventDefault();
 
-    console.log("e", e)
+    // console.log("e", e)
 
     let getInfoURL = BASE_URL + INFO + ALL;
 
@@ -94,10 +98,10 @@ class App extends Component {
       })
   }
 
-  getAllVehicleLocations = (e) => {
-    e.preventDefault();
+  getAllVehicleLocations = () => {
+    // e.preventDefault();
 
-    console.log("e", e)
+    // console.log("e", e)
 
     let getInfoURL = BASE_URL + LOC + ALL;
 
@@ -121,20 +125,59 @@ class App extends Component {
     console.log("App buildMapMarkers(): ", e);
     console.log(this.state.allLocations);
 
-    let markers = this.state.allLocations.map( (marker, index) => {
+    let markers = this.state.allLocations.map((marker, index) => {
       return {
         marker
       }
-    }) 
+    })
 
     console.log(markers[3].marker.id);
 
 
   }
 
+  buildVehicleBtns = () => {
+    console.log("Build Buttons Called")
+    let vehicleButtons
+    if (this.state.allVehicles) {
+      vehicleButtons = this.state.allVehicles.map((vehicle, index) => {
+        return (
+          <div className='button'>
+            <Button id={vehicle.id} onClick="#" variant="outline-primary">Show vehicle {vehicle.id} Info</Button>
+          </div >
+        )
+      })
+    }
+    console.log(vehicleButtons);
+    return vehicleButtons;//console.log(`vehicle btns`, vehicleButtons)
+  }
 
+
+
+  count = 0
 
   render() {
+    let vehicleButtons = this.buildVehicleBtns()
+    
+    console.log(this.state.allVehicles[0])
+    // if(this.state.allVehicles !== undefined) {
+    //   this.setState( { selected_vehicle_id:  this.state.allVehicles[0].id   })
+    // }
+    
+
+    console.log(vehicleButtons);
+
+    this.count += 1;
+    console.log("All Veh Info: ", this.state.allVehicles)
+    console.log("All Veh Loc: ", this.state.allLocations)
+    console.log("app render ran this many times: ", this.count)
+
+
+    let showCard = null;
+    // if (this.state.selected_vehicle_id !== null) {
+    //     showCard = <ShowCard>{this.state}</ShowCard>;
+    // }
+
 
 
     return (
@@ -146,28 +189,32 @@ class App extends Component {
         <div>
           <nav>
 
-            <Link to="/">Click</Link>
+            {/* <Link to="/">Click</Link> */}
             {/* <Link to=""></Link> */}
           </nav>
-          <div>
-            {/* {AllButtons} */}
-            <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '}
-            <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
-            <Button id='3' onClick={this.getVehicleInfoById} variant="outline-success">Vehicle 3 Info</Button>{' '}
-            <Button id='4' onClick={this.buildMapMarkers} variant="outline-warning">Build Map Markers</Button>{' '}
-            <Button variant="outline-danger">Danger</Button>{' '}
-            <Button variant="outline-info">Info</Button>{' '}
-            <Button variant="outline-light">Light</Button>{' '}
-            <Button variant="outline-dark">Dark</Button>
+          <div className="Buttons_Main">
+            <ButtonGroup aria-label="Select a Vehicle ID for more information">
+              {vehicleButtons}
+            </ButtonGroup>
+
+
+            <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '} */}
+          <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
+            <Button id='3' onClick={this.buildVehicleBtns} variant="outline-success">Btn builder</Button>{' '}
+            {/* <Button id='4' onClick={this.buildMapMarkers} variant="outline-warning">Build Map Markers</Button>{' '}
+          <Button variant="outline-danger">Danger</Button>{' '}
+          <Button variant="outline-info">Info</Button>{' '}
+          <Button variant="outline-light">Light</Button>{' '}
+          <Button variant="outline-dark">Dark</Button> */}
           </div>
 
-          <div>
-            <ShowCard>Our Show{this.state}</ShowCard>
-          </div>
+          {/* <div className="Show_Main_Card">
+            <ShowCard {...this.state}></ShowCard>
+          </div> */}
 
-          <div>
+          {/* <div className="Map_Main">
             <ShowMap>Our Map{this.state}</ShowMap>
-          </div>
+          </div> */}
 
           <main>
 
