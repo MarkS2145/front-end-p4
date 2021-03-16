@@ -17,7 +17,6 @@ const LOC = '/location';
 const ALL = '/all';
 const TEST_ID = '?id=';
 
-
 const axios = require('axios').default;
 
 class App extends Component {
@@ -25,12 +24,13 @@ class App extends Component {
     super(props);
     this.state = {
       selected_vehicle_id: null,
+      selected_vehicle_info: [],
       allVehicles: [],
       location: [],
       allLocations: [],
-      // allMarkers: []
     }
   }
+
 
   componentDidMount = () => {
     this.getAllVehicleInfo();
@@ -136,20 +136,35 @@ class App extends Component {
 
   }
 
-  buildVehicleBtns = () => {
-    console.log("Build Buttons Called")
-    let vehicleButtons
+
+  selectedVehicle = (e) => {
+    this.setState({ selected_vehicle_id: e.target.id })
+  }
+
+  renderVehicleBtns = () => {
+    console.log("Render Buttons Called");
+    let vehicleButtonsList = null;
     if (this.state.allVehicles) {
-      vehicleButtons = this.state.allVehicles.map((vehicle, index) => {
+      vehicleButtonsList = this.state.allVehicles.map((vehicle, index) => {
         return (
           <div className='button'>
-            <Button id={vehicle.id} onClick="#" variant="outline-primary">Show vehicle {vehicle.id} Info</Button>
+            <Button id={vehicle.id} key={vehicle.id} onClick={this.selectedVehicle} variant="outline-primary">Show vehicle {vehicle.id} Info</Button>
           </div >
         )
       })
     }
-    console.log(vehicleButtons);
-    return vehicleButtons;//console.log(`vehicle btns`, vehicleButtons)
+    console.log(vehicleButtonsList);
+    return vehicleButtonsList;
+  }
+
+  renderVehicleCard = () => {
+    // console.log("Render Vehicle Card Called");
+    // console.log(this.state.allVehicles)
+    let vehicleCard = null;
+    if (this.state.allVehicles) {
+      vehicleCard = this.state.allVehicles.find((element => element.id == this.state.selected_vehicle_id))
+    }
+    this.setState({ selected_vehicle_info: vehicleCard });
   }
 
 
@@ -157,15 +172,14 @@ class App extends Component {
   count = 0
 
   render() {
-    let vehicleButtons = this.buildVehicleBtns()
-    
-    console.log(this.state.allVehicles[0])
-    // if(this.state.allVehicles !== undefined) {
-    //   this.setState( { selected_vehicle_id:  this.state.allVehicles[0].id   })
-    // }
-    
+    console.log("selected id is: ", this.state.selected_vehicle_id)
 
-    console.log(vehicleButtons);
+    let vehicleButtons = this.renderVehicleBtns()
+    console.log("selected vehicle info is: ", this.state.selected_vehicle_info)
+    // let selectedCard = this.renderVehicleCard()
+
+    // console.log(selectedCard);
+
 
     this.count += 1;
     console.log("All Veh Info: ", this.state.allVehicles)
@@ -198,9 +212,9 @@ class App extends Component {
             </ButtonGroup>
 
 
-            <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '} */}
-          <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
-            <Button id='3' onClick={this.buildVehicleBtns} variant="outline-success">Btn builder</Button>{' '}
+            <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '}
+            <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
+            <Button id='3' onClick={this.renderVehicleCard} variant="outline-success">render Card</Button>{' '}
             {/* <Button id='4' onClick={this.buildMapMarkers} variant="outline-warning">Build Map Markers</Button>{' '}
           <Button variant="outline-danger">Danger</Button>{' '}
           <Button variant="outline-info">Info</Button>{' '}
@@ -208,9 +222,9 @@ class App extends Component {
           <Button variant="outline-dark">Dark</Button> */}
           </div>
 
-          {/* <div className="Show_Main_Card">
-            <ShowCard {...this.state}></ShowCard>
-          </div> */}
+          <div className="Show_Main_Card">
+            <ShowCard {...this.state.selected_vehicle_info}></ShowCard>
+          </div>
 
           {/* <div className="Map_Main">
             <ShowMap>Our Map{this.state}</ShowMap>

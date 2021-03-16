@@ -16,20 +16,12 @@ class ShowCard extends Component {
         console.log(props)
     }
 
-    buildCard = () => {
-        let selId = this.props.selected_vehicle_id;
 
-        // console.log("buildCard here: ", (selId !== null))
-        // console.log(this.props.children.allVehicles)
-
-        let cardInfo = null;
-        this.props.allVehicles.map((info) => {
-            if (info.id === selId) {
-                cardInfo = info;
-            }
-        })
-
-        console.log("mapped card to: ", cardInfo)
+    render() {
+        console.log(this.props);
+        console.log("hello ShowCard here: ", this.props)
+        console.log("Selected ID: ", this.props.id)
+        let cardInfo = this.props;
 
         return (
             <Card style={{ width: '18rem' }}>
@@ -55,27 +47,6 @@ class ShowCard extends Component {
                 <Card.Footer>Vehicle record last updated at:  {cardInfo.updatedAt}</Card.Footer>
             </Card>
         )
-    }
-
-    render() {
-        console.log(this.props);
-
-
-
-        console.log("hello ShowCard here: ", this.props)
-        console.log("Selected ID: ", this.props.selected_vehicle_id)
-
-        // debugger
-
-        let infoCard = null;
-        if (this.props.selected_vehicle_id !== null) {
-            infoCard = this.buildCard();
-        }
-        return (
-            <div>
-                {infoCard}
-            </div >
-        );
     }
 }
 
