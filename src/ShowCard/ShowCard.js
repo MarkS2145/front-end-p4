@@ -16,10 +16,9 @@ class ShowCard extends Component {
         console.log(props)
     }
 
-
-
     render() {
         console.log("hello ShowCard here: ", this.props.children)
+
 
         if (this.props.children) {
             return (
