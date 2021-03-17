@@ -44,5 +44,9 @@
   },
   "devDependencies": {
     "react-app-env": "^1.2.3"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   }
 }
