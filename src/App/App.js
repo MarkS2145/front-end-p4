@@ -13,7 +13,8 @@ import Footer from '../Footer/Footer';
 // import App_Image from '../app_image.jpeg'
 
 // const CORS_URL = 'https://api.allorigins.win/get?url=';
-const BASE_URL = 'http://localhost:3000/vehicle';
+// const BASE_URL = 'http://localhost:3000/vehicle';
+const BASE_URL ='https://tracker-backend-app.herokuapp.com/vehicle'
 const INFO = '/info';
 const LOC = '/location';
 const ALL = '/all';
