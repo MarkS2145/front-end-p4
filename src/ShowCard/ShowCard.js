@@ -18,9 +18,8 @@ class ShowCard extends Component {
 
 
     render() {
-        console.log(this.props);
-        console.log("hello ShowCard here: ", this.props)
-        console.log("Selected ID: ", this.props.id)
+        // console.log("hello ShowCard here: ", this.props)
+        console.log("ShowCard - Selected ID: ", this.props.id)
         let cardInfo = this.props;
 
         return (

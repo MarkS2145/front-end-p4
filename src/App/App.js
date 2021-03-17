@@ -29,6 +29,10 @@ class App extends Component {
       location: [],
       allLocations: [],
     }
+    this.vehicleButtons = [];
+    this.showCardState = [];
+    this.showMapState = [];
+    this.count = 0;
   }
 
 
@@ -78,17 +82,12 @@ class App extends Component {
   }
 
   getAllVehicleInfo = () => {
-    // e.preventDefault();
-
-    // console.log("e", e)
-
     let getInfoURL = BASE_URL + INFO + ALL;
-
-    console.log("App get ALL VEHICLE INFO URL: ", getInfoURL);
+    // console.log("App get ALL VEHICLE INFO URL: ", getInfoURL);
 
     axios.get(getInfoURL)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           allVehicles: response.data
         })
@@ -99,17 +98,12 @@ class App extends Component {
   }
 
   getAllVehicleLocations = () => {
-    // e.preventDefault();
-
-    // console.log("e", e)
-
     let getInfoURL = BASE_URL + LOC + ALL;
-
-    console.log("App  ALL VEHICLE Location URL: ", getInfoURL);
+    // console.log("App  ALL VEHICLE Location URL: ", getInfoURL);
 
     axios.get(getInfoURL)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           allLocations: response.data
         })
@@ -167,32 +161,29 @@ class App extends Component {
     this.setState({ selected_vehicle_info: vehicleCard });
   }
 
+  myGary(){
+    console.log('tic, toc');
+  }
 
-
-  count = 0
 
   render() {
-    console.log("selected id is: ", this.state.selected_vehicle_id)
 
-    let vehicleButtons = this.renderVehicleBtns()
-    console.log("selected vehicle info is: ", this.state.selected_vehicle_info)
-    // let selectedCard = this.renderVehicleCard()
-
-    // console.log(selectedCard);
-
+    // Only call the timer once the first map has been shown
+    if (this.count === 0){
+      setInterval(this.myGary, 3000);
+    }
+    
+    if( this.count > 1) {
+      console.log("All Vehicle Info: ", this.state.allVehicles)
+      console.log("All Vehicle Loc: ", this.state.allLocations)
+      this.vehicleButtons = this.renderVehicleBtns()
+      this.showCardState = <ShowCard {...this.state.selected_vehicle_info}></ShowCard>
+      this.showMapState = <ShowMap {...this.state}></ShowMap> //allLocations
+    }
+    
+    console.log("App render ran this many times: ", this.count)
 
     this.count += 1;
-    console.log("All Veh Info: ", this.state.allVehicles)
-    console.log("All Veh Loc: ", this.state.allLocations)
-    console.log("app render ran this many times: ", this.count)
-
-
-    let showCard = null;
-    // if (this.state.selected_vehicle_id !== null) {
-    //     showCard = <ShowCard>{this.state}</ShowCard>;
-    // }
-
-
 
     return (
       <div className="Tracker-App" >
@@ -208,7 +199,7 @@ class App extends Component {
           </nav>
           <div className="Buttons_Main">
             <ButtonGroup aria-label="Select a Vehicle ID for more information">
-              {vehicleButtons}
+              {this.vehicleButtons}
             </ButtonGroup>
 
 
@@ -222,13 +213,13 @@ class App extends Component {
           <Button variant="outline-dark">Dark</Button> */}
           </div>
 
-          <div className="Show_Main_Card">
-            <ShowCard {...this.state.selected_vehicle_info}></ShowCard>
+          <div className="Show_Card">
+              {this.showCardState}
           </div>
 
-          {/* <div className="Map_Main">
-            <ShowMap>Our Map{this.state}</ShowMap>
-          </div> */}
+          <div className="Show_Map">
+              {this.showMapState}
+          </div>
 
           <main>
 

@@ -62,6 +62,21 @@ I would like to use the polyLine to indicate the path traveled by a vehicle.
 This capability may be useful.
 1. [Info Windows](https://developers.google.com/maps/documentation/javascript/infowindows)
 
+### Adding an Info Box
+``` html
+<InfoBox
+  onLoad={this.onLoad}
+  options={options}
+  position={center2}
+  >
+  <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12 }}>
+      <div style={{ fontSize: 16, fontColor: `#08233B` }}>
+      Hello, World!
+      </div>
+  </div>
+</InfoBox>
+```
+
 ### Future Development considerations:
 1. [Adding marker clustering](https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering)
 
