@@ -1,5 +1,6 @@
 .Tracker-App {
   text-align: center;
+  height: 100vh;
 }
 
 .Tracker-App-logo {
@@ -24,7 +25,42 @@
   color: #61dafb;
 }
 
-.Show_Card {
-  border: 3px, red, solid;
+.Buttons-Main {
+  /* background-color: aqua;
+  border: solid, red, 3px; */
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+
 }
 
+.Display-Vehicle-Info {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 70vh;
+}
+.Show-Card {
+  display:inline-flex;
+  order: 2;
+  width: 30%;
+  height: 100%;
+}
+
+.Show-Map {
+  order: 1;
+  width: 70%;
+  height: 100%;
+}
+
+.Get-All-Btns {
+  width: auto;
+  height: 10vh;
+}
+
+.Get-All-Btns {
+  /* background-color: aqua;
+  border: solid, red, 3px; */
+  height: 5vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}

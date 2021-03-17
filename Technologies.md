@@ -30,6 +30,9 @@ Additional information provided by teh react app can be found here: [Link](React
 
 1. [Express API backend lesson](https://git.generalassemb.ly/john-deere-sei-7/muse-express-api-backend-lesson)
 
+## Boostrap
+
+
 ### CORS - Copy to Back End Readme
 This has been a challenging topic for me, and I still am not quite sure why.  Other cohort team members don't see to get as many CORS errors as I do.  And, fixes on their machines don't always work on mine.  Strange sounding, I know, but that is how my Friday, March 13th was spent trouble shooting CORS issues.
 In the end we added the following to my compoents that overcame the issue to my Back end code.  

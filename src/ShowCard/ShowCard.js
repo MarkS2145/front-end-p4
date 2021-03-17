@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Route, Link, Switch } from "react-router-dom";
-import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+// import ReactDOM from 'react-dom';
+// import { Route, Link, Switch } from "react-router-dom";
+import {  Card, ListGroup, ListGroupItem } from "react-bootstrap"; //Button,
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ShowCard.css';
 
 require('dotenv').config()
-
-
-const showCard = "";
 
 class ShowCard extends Component {
     constructor(props) {
@@ -16,6 +13,9 @@ class ShowCard extends Component {
         console.log(props)
     }
 
+    message(){
+        console.log("Show Card message Here...")
+    }
 
     render() {
         // console.log("hello ShowCard here: ", this.props)
@@ -23,7 +23,8 @@ class ShowCard extends Component {
         let cardInfo = this.props;
 
         return (
-            <Card style={{ width: '18rem' }}>
+            // <Card style={{ width: '18rem' }}>
+            <Card>
                 <Card.Img variant="top" src={cardInfo.img_url} />
                 <Card.Body>
                     <Card.Title>
@@ -41,7 +42,7 @@ class ShowCard extends Component {
                 </ListGroup>
 
                 <Card.Body>
-                    <Card.Link href="#">Show Current Location</Card.Link>
+                    <input type="button" onClick={this.message} value="View Current Job"></input>
                 </Card.Body>
                 <Card.Footer>Vehicle record last updated at:  {cardInfo.updatedAt}</Card.Footer>
             </Card>
