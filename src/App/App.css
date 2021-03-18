@@ -77,14 +77,14 @@
   } */
   .Show-Card {
       /* display:flex; */
-      order: 2;
+      order: 1;
       width: 100%;
       height: 50%;
       /* border: solid 5px aqua; */
   }
 
   .Show-Map {
-    order: 1;
+    order: 2;
     width: 100%;
     height: 50%;
     /* border: solid 5px crimson; */
