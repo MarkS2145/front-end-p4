@@ -75,18 +75,30 @@
   /* body {
     background-color: lightblue;
   } */
+
+  .Display-Vehicle-Info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .Show-Card {
       /* display:flex; */
+      justify-content: center;
       order: 1;
       width: 100%;
-      height: 50%;
+      height: 70%;
       /* border: solid 5px aqua; */
   }
 
   .Show-Map {
+    justify-content: center;
     order: 2;
     width: 100%;
-    height: 50%;
+    height: 30%;
     /* border: solid 5px crimson; */
   }
 
