@@ -47,9 +47,9 @@ class ShowMap extends Component {
 
 
   render() {
-    console.log("Map rendered this many times: ", this.count)
-    console.log("Map props: ", this.props)
-    console.log("Map selected id: ", this.props.selected_vehicle_id)
+    // console.log("Map rendered this many times: ", this.count)
+    // console.log("Map props: ", this.props)
+    // console.log("Map selected id: ", this.props.selected_vehicle_id)
 
     if (this.count > 0) {
       this.setSelectedMarker();

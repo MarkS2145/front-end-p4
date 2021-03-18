@@ -1,14 +1,18 @@
+#root {
+  position: relative; 
+  min-height: 100%;
+}
+
 .Tracker-App {
+  position: relative;
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .Tracker-App-logo {
   height: 15vmin;
   pointer-events: none;
 }
-
-
 
 .App-header {
   background-color: #282c34;
@@ -20,6 +24,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 
 .App-link {
   color: #61dafb;
@@ -38,9 +43,10 @@
   flex-wrap: wrap;
   width: 100vw;
   height: 70vh;
+  /* border: solid 3px blue; */
 }
 .Show-Card {
-  display:inline-flex;
+  /* display:flex; */
   order: 2;
   width: 30%;
   height: 100%;
@@ -63,4 +69,25 @@
   height: 5vh;
   margin-top: 2vh;
   margin-bottom: 2vh;
+}
+
+@media only screen and (max-width: 600px) {
+  /* body {
+    background-color: lightblue;
+  } */
+  .Show-Card {
+      /* display:flex; */
+      order: 2;
+      width: 100%;
+      height: 20%;
+      /* border: solid 5px aqua; */
+  }
+
+  .Show-Map {
+    order: 1;
+    width: 100%;
+    height: 40%;
+    /* border: solid 5px crimson; */
+  }
+
 }

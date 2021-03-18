@@ -12,11 +12,11 @@ class ShowCard extends Component {
         this.state = {
             show: false,
         }
-        console.log(props)
+        // console.log(props)
     }
 
     showModal = () => {
-        console.log("Show Modal clicked", this.state.show)
+        // console.log("Show Modal clicked", this.state.show)
         this.setState({ show: true });
     }
 
@@ -27,7 +27,7 @@ class ShowCard extends Component {
 
     render() {
         // console.log("hello ShowCard here: ", this.props)
-        console.log("ShowCard - Selected ID: ", this.props.id)
+        // console.log("ShowCard - Selected ID: ", this.props.id)
         let cardInfo = this.props;
 
         return (

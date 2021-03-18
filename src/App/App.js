@@ -1,7 +1,7 @@
 import React, { Component } from 'react';  //, useDebugValue 
 // import ReactDOM from 'react-dom';
 // import { Route, Link, Switch } from "react-router-dom";
-import { Button, ButtonGroup} from "react-bootstrap"; //Card, ListGroup, ListGroupItem
+import { Button, ButtonGroup } from "react-bootstrap"; //Card, ListGroup, ListGroupItem
 // import  from "bootstrap"
 // import logo from '../logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,12 +48,12 @@ class App extends Component {
   getVehicleInfoById = (e) => {
     let id = ""
     id = e.target.id;
-    console.log("e.target.id", id)
+    // console.log("e.target.id", id)
     let getInfoURL = BASE_URL + INFO + TEST_ID + id;
     let getLocationURL = BASE_URL + LOC + TEST_ID + id;
 
-    console.log("App get VEHICLE INFO URL: ", getInfoURL);
-    console.log("App get VEHICLE LOCATION URL: ", getLocationURL);
+    // console.log("App get VEHICLE INFO URL: ", getInfoURL);
+    // console.log("App get VEHICLE LOCATION URL: ", getLocationURL);
 
     axios.get(getInfoURL)
       .then((response) => {
@@ -64,7 +64,7 @@ class App extends Component {
         // console.log(this.state)
       })
       .catch((error) => {
-        console.log("Bob", error);
+        console.log("Tracker APP axios GET INFO Error", error);
       })
     axios.get(getLocationURL)
       .then((response) => {
@@ -72,10 +72,10 @@ class App extends Component {
         this.setState({
           location: response.data
         })
-        console.log(this.state)
+        // console.log(this.state)
       })
       .catch((error) => {
-        console.log("Bob", error);
+        console.log("Tracker APP axios GET Location Error", error);
       })
 
     return (
@@ -97,7 +97,7 @@ class App extends Component {
         })
       })
       .catch((error) => {
-        console.log("APP - ALL Vehicles", error);
+        console.log("Tracker APP axios GET ALL VEHICLE INFO Error", error);
       })
   }
 
@@ -113,25 +113,21 @@ class App extends Component {
         })
       })
       .catch((error) => {
-        console.log("APP - ALL Vehicles", error);
+        console.log("Tracker APP axios GET ALL VEHICLE LOCATION Error", error);
       })
   }
 
   buildMapMarkers = (e) => {
     e.preventDefault();
 
-    console.log("App buildMapMarkers(): ", e);
-    console.log(this.state.allLocations);
+    // console.log("App buildMapMarkers(): ", e);
+    // console.log(this.state.allLocations);
 
-    let markers = this.state.allLocations.map((marker, index) => {
-      return {
-        marker
-      }
+    this.state.allLocations.map((marker, index) => {
+      // let markers = this.state.allLocations.map((marker, index) => {
+      return <div key={index}>{ marker }</div>
     })
-
-    console.log(markers[3].marker.id);
-
-
+    // console.log(markers[3].marker.id);
   }
 
   selectedVehicleSetState = (e) => {
@@ -153,23 +149,23 @@ class App extends Component {
     if (this.state.allVehicles) {
       vehicleButtonsList = this.state.allVehicles.map((vehicle, index) => {
         return (
-          <div className='button'>
+          <div className='button' key={vehicle.id}>
             <Button id={vehicle.id} key={vehicle.id} onClick={this.selectedVehicleSetState} variant="outline-primary">Vehicle {vehicle.id}</Button>
           </div >
         )
       })
     }
-    console.log("Render Buttons Called", vehicleButtonsList);
+    // console.log("Render Buttons Called", vehicleButtonsList);
     return vehicleButtonsList;
   }
 
 
   myGary() {
-    console.log('tic, toc');
+    // console.log('tic, toc');
   }
 
   dropMessage(){
-    console.log("App drop Message clicked")
+    // console.log("App drop Message clicked")
 }
 
 
@@ -181,15 +177,15 @@ class App extends Component {
     }
 
     if (this.count > 1) {
-      console.log("All Vehicle Info: ", this.state.allVehicles)
-      console.log("All Vehicle Loc: ", this.state.allLocations)
+      // console.log("All Vehicle Info: ", this.state.allVehicles)
+      // console.log("All Vehicle Loc: ", this.state.allLocations)
       this.vehicleButtons = this.renderVehicleBtns()
 
       this.showCardState = <ShowCard {...this.state.selected_vehicle_info}></ShowCard>
       this.showMapState = <ShowMap {...this.state}></ShowMap> //allLocations
     }
 
-    console.log("App render ran this many times: ", this.count)
+    // console.log("App render ran this many times: ", this.count)
 
     this.count += 1;
 
@@ -217,14 +213,17 @@ class App extends Component {
             </div>
           </div>
 
-          <div className="Get-All-Btns">
+          {/* <div className="Get-All-Btns">
             <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '}
             <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
-          </div>
+          </div> */}
 
         </main>
 
-        <Footer></Footer>
+        <div className='fixed-bottom'>
+          <Footer></Footer>
+        </div>
+      
       </div>
     );
   }
