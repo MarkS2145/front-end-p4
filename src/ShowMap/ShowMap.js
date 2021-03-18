@@ -4,7 +4,6 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import './ShowMap.css';
 
 const TER = 'terrain'
-const HYB = 'hybrid'
 
 const KEY = process.env.REACT_APP_API_KEY
 
@@ -20,25 +19,12 @@ const Torrance = {
 };
 
 
-const divStyle = {
-  background: `white`,
-  border: `1px solid #ccc`,
-  padding: 15,
-}
-
-const options = { closeBoxURL: '', enableEventPropagation: true };
-
-
-
-
 class ShowMap extends Component {
   constructor(props) {
     super(props);
     this.count = 0;
     this.newMarker = [];
   }
-
-
 
 
   setSelectedMarker = () => {

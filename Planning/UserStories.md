@@ -17,9 +17,9 @@ As a FM:
 * Vehicle Image
 * Driver Name
 * Driver Phone Number
-1. __[]__ My Vehicle Asset shall send it's current position, Latitude and Longitude, to be stored for retrival by the FE App.
+1. __[x]__ My Vehicle Asset shall send it's current position, Latitude and Longitude, to be stored for retrival by the FE App.
 1. __[x]__ I would like each vehicle to have a unique identifier assigned to it.
-1. __[x ]__ My vehicle fleet information should persist day to day, session to session, and information not be lost when my browser closes.
+1. __[x]__ My vehicle fleet information should persist day to day, session to session, and information not be lost when my browser closes.
 
 
 ### Managing a Vehicle Fleet
@@ -33,8 +33,8 @@ As a FM:
 
 ## Viewing my Fleet
 As a User:
-1. __[]__ I would like to be able to have all vehicle information and current position of my fleet be loaded when the Front End (FE) application loads.
-1. __[]__ I would like to be able to select a vehicle to see it's detailed information attributes, when it was last udpated, and it's current location marked on a map.
+1. __[x]__ I would like to be able to have all vehicle information and current position of my fleet be loaded when the Front End (FE) application loads.
+1. __[x]__ I would like to be able to select a vehicle to see it's detailed information attributes, when it was last udpated, and it's current location marked on a map.
 
 #### Future considerations
 As a User:

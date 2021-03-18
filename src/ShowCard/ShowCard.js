@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
-// import { Route, Link, Switch } from "react-router-dom";
-import {  Card, ListGroup, ListGroupItem } from "react-bootstrap"; //Button,
+import { Card, ListGroup, ListGroupItem, Button, Modal } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ShowCard.css';
+// import Jobs from '../Jobs/Jobs';
 
 require('dotenv').config()
 
 class ShowCard extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            show: false,
+        }
         console.log(props)
     }
 
-    message(){
-        console.log("Show Card message Here...")
+    showModal = () => {
+        console.log("Show Modal clicked", this.state.show)
+        this.setState({ show: true });
     }
+
+    hideModal = () => {
+        this.setState({ show: false });
+    }
+
 
     render() {
         // console.log("hello ShowCard here: ", this.props)
@@ -23,7 +31,6 @@ class ShowCard extends Component {
         let cardInfo = this.props;
 
         return (
-            // <Card style={{ width: '18rem' }}>
             <Card>
                 <Card.Img variant="top" src={cardInfo.img_url} />
                 <Card.Body>
@@ -42,7 +49,19 @@ class ShowCard extends Component {
                 </ListGroup>
 
                 <Card.Body>
-                    <input type="button" onClick={this.message} value="View Current Job"></input>
+                    <Button onClick={this.showModal}>Open Jobs</Button>
+                    <Modal show={this.state.show} onHide={this.hideModal}>
+                        <div className="Modal">
+                            <Modal.Header closeButton>
+                            <Modal.Title>Current Job</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>I am working hard out in the field for Uncle Bob.</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={this.hideModal}>Close</Button>
+                        </Modal.Footer>
+                        </div>
+                        
+                    </Modal>
                 </Card.Body>
                 <Card.Footer>Vehicle record last updated at:  {cardInfo.updatedAt}</Card.Footer>
             </Card>

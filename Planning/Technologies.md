@@ -32,10 +32,22 @@ Additional information provided by teh react app can be found here: [Link](React
 
 ## Bootstrap
 This technology was used for my Header, Footer and page buttons.  It is an excellent technology to make your web pages look highley professional straight out of the box.
+[Bootstrap documentation](https://react-bootstrap.github.io/)
+
+``` html
+    <Button id='1' onClick={this.getAllVehicleInfo} variant="outline-primary">Get All Vehicle Info</Button>{' '}
+    <Button id='2' onClick={this.getAllVehicleLocations} variant="outline-secondary">Get All Vehicle Locations</Button>{' '}
+    <Button id='4' onClick={this.buildMapMarkers} variant="outline-warning">Build Map Markers</Button>{' '}
+    <Button variant="outline-danger">Danger</Button>{' '}
+    <Button variant="outline-info">Info</Button>{' '}
+    <Button variant="outline-light">Light</Button>{' '}
+    <Button variant="outline-dark">Dark</Button
+```
 
 ---
 
 ## Heroku Deployments
+[Heroku](https://dashboard.heroku.com/apps)
 
 I suggest performing the back end deployment first then front end.
 
@@ -99,6 +111,6 @@ In the end we added the following to my compoents that overcame the issue to my 
 ### Markdown
 1. [Syntax](https://www.markdownguide.org/extended-syntax/)
 
-### Additional refereces
+## Additional refereces
 1. [Group Project 3](https://github.com/PJTeel/unit3-birdapp/blob/master/src/App.js)
 1. [SEI Calendar](https://docs.google.com/spreadsheets/d/1HgN0kh5VfhBy-iwlsA1O3u-sIQMTalBdrj89-dp5B9k/edit#gid=780921503)
