@@ -11,6 +11,9 @@ Tracker App consists of a REACT front end using Axios request to get data throug
 This app leverages many technologies on the front end and back end.  Details can be found here:  [Link](Technologies.md)
 
 ---
+ ## Google Javascript MAP API
+ I created a seperate document detailing my path through the [Google API](./GoogleAPI.md) and some of the functionality that I played with but didn't make it into the final version of the SEI project release.
+
 
 ## Tracker App Wireframes
 The following images were used as a guide for the desired user layout.
@@ -21,6 +24,8 @@ The following images were used as a guide for the desired user layout.
 3. Navigation Bar Pages
    1. tbd...
 
+## Back End DataBase
+PGAdmin was used to manage the back end.  Sequelize to create/drop tables, migrate them and seed them with initial starting data
 
 
 ---

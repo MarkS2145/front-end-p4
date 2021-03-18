@@ -8,6 +8,10 @@ An API key is required to use teh Google API.  This key is tied to a billing acc
 
 The generated API key is hidden in ```.env``` that is excluded through our ```.gitignore``` file
 
+Failure to use a valid API key results int he following map display characteristics.
+![MAP image without API Key](./public/maps_API_KEY_error.jpeg)
+
+
 ## Google Documentation
 The Google documentation is difficult to follow on how to actually get the Maps Javascript API up and running; in spite of providing javascript code that runs in their dev environment.
 
